@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muaz Al Dalil — Frontend Developer</title>
-  <meta name="description" content="Frontend developer crafting modern, performant, and beautiful web experiences. Specializing in React, JavaScript, and responsive design.">
+  <meta name="description" content="Frontend developer crafting modern, performant, and beautiful web experiences. Specializing in JavaScript, responsive design, and clean UI.">
   <meta property="og:title" content="Muaz Al Dalil — Frontend Developer">
   <meta property="og:description" content="Frontend developer crafting modern, performant, and beautiful web experiences.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#6c63ff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236c63ff'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='16' fill='white'%3EMA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -84,6 +85,9 @@
             <a href="#contact" class="btn btn-outline">
               <span>Contact Me</span>
             </a>
+            <a href="resume.pdf" class="btn btn-outline" download>
+              <i class="fas fa-download"></i> <span>Resume</span>
+            </a>
           </div>
           <div class="hero-socials">
             <a href="https://linkedin.com/in/muaz-aldalil" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -141,12 +145,13 @@
               I believe great frontend development is a blend of art and science: 
               the precision of code meets the intuition of design.
             </p>
+            <a href="resume.pdf" class="btn btn-sm btn-outline" style="margin-top:8px;" download><i class="fas fa-download"></i> Download Resume</a>
           </div>
           <div class="about-card about-card-what">
             <div class="about-card-icon"><i class="fas fa-code"></i></div>
             <h3>What I Build</h3>
             <p>
-              I specialize in building modern web apps using <strong>React, JavaScript, and CSS</strong>. 
+              I specialize in building modern web apps using <strong>JavaScript, HTML, and CSS</strong>. 
               From landing pages to full dashboards — I focus on performance, 
               accessibility, and polished UI.
             </p>
@@ -179,7 +184,7 @@
                 <span class="journey-dot"></span>
                 <div>
                   <strong>Junior Frontend Developer</strong>
-                  <p>Joined WebStudio, shipping production React apps</p>
+                  <p>Joined WebStudio, shipping production interfaces</p>
                 </div>
               </div>
               <div class="journey-item">
@@ -235,37 +240,8 @@
           </div>
           <div class="skill-group">
             <div class="skill-group-header">
-              <i class="fas fa-layer-group"></i>
-              <h3>Frameworks</h3>
-            </div>
-            <div class="skill-items">
-              <div class="skill-item" style="--level:0">
-                <div class="skill-item-info">
-                  <span>React</span>
-                  <span>0%</span>
-                </div>
-                <div class="skill-item-bar"><div class="skill-item-fill"></div></div>
-              </div>
-              <div class="skill-item" style="--level:0">
-                <div class="skill-item-info">
-                  <span>Next.js</span>
-                  <span>0%</span>
-                </div>
-                <div class="skill-item-bar"><div class="skill-item-fill"></div></div>
-              </div>
-              <div class="skill-item" style="--level:65">
-                <div class="skill-item-info">
-                  <span>Tailwind CSS</span>
-                  <span>65%</span>
-                </div>
-                <div class="skill-item-bar"><div class="skill-item-fill"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-header">
               <i class="fas fa-palette"></i>
-              <h3>Design & UX</h3>
+              <h3>Design & Styling</h3>
             </div>
             <div class="skill-items">
               <div class="skill-item" style="--level:75">
@@ -286,6 +262,13 @@
                 <div class="skill-item-info">
                   <span>UI Principles</span>
                   <span>70%</span>
+                </div>
+                <div class="skill-item-bar"><div class="skill-item-fill"></div></div>
+              </div>
+              <div class="skill-item" style="--level:65">
+                <div class="skill-item-info">
+                  <span>Tailwind CSS</span>
+                  <span>65%</span>
                 </div>
                 <div class="skill-item-bar"><div class="skill-item-fill"></div></div>
               </div>
@@ -334,12 +317,11 @@
         </div>
         <div class="projects-filter">
           <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="react">React</button>
           <button class="filter-btn" data-filter="vanilla">Vanilla JS</button>
           <button class="filter-btn" data-filter="ui">UI / Design</button>
         </div>
         <div class="projects-grid" id="projectsGrid">
-          <article class="project-card" data-category="react">
+          <article class="project-card" data-category="ui">
             <div class="project-card-img">
               <img src="https://placehold.co/600x400/2d2d44/e0e0e0?text=Admin+Dashboard" alt="Admin Dashboard preview" loading="lazy">
               <div class="project-card-overlay">
@@ -351,13 +333,13 @@
             </div>
             <div class="project-card-body">
               <div class="project-card-tags">
-                <span>React</span><span>Chart.js</span><span>CSS Grid</span>
+                <span>JavaScript</span><span>Chart.js</span><span>CSS Grid</span>
               </div>
               <h3>Admin Dashboard</h3>
               <p>A responsive admin dashboard with interactive charts, data tables, and a clean modular UI.</p>
             </div>
           </article>
-          <article class="project-card" data-category="react">
+          <article class="project-card" data-category="vanilla">
             <div class="project-card-img">
               <img src="https://placehold.co/600x400/2d2d44/e0e0e0?text=Weather+App" alt="Weather App preview" loading="lazy">
               <div class="project-card-overlay">
@@ -369,7 +351,7 @@
             </div>
             <div class="project-card-body">
               <div class="project-card-tags">
-                <span>React</span><span>API</span><span>CSS</span>
+                <span>JavaScript</span><span>API</span><span>CSS</span>
               </div>
               <h3>Weather Dashboard</h3>
               <p>A clean weather app with live forecasts, dynamic backgrounds, and location-based data.</p>
@@ -423,28 +405,10 @@
             </div>
             <div class="project-card-body">
               <div class="project-card-tags">
-                <span>HTML</span><span>CSS</span><span>GSAP</span>
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
               </div>
               <h3>SaaS Landing Page</h3>
               <p>A conversion-focused landing page with smooth scroll animations and a polished dark theme.</p>
-            </div>
-          </article>
-          <article class="project-card" data-category="ui">
-            <div class="project-card-img">
-              <img src="https://placehold.co/600x400/2d2d44/e0e0e0?text=Design+System" alt="Design system preview" loading="lazy">
-              <div class="project-card-overlay">
-                <div class="project-card-links">
-                  <a href="#" class="project-link" aria-label="Live demo"><i class="fas fa-external-link-alt"></i><span>Live</span></a>
-                  <a href="#" class="project-link" aria-label="Source code"><i class="fab fa-github"></i><span>Code</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-body">
-              <div class="project-card-tags">
-                <span>Figma</span><span>CSS</span><span>Storybook</span>
-              </div>
-              <h3>Component Library</h3>
-              <p>A reusable design system with accessible components, consistent tokens, and dark/light themes.</p>
             </div>
           </article>
         </div>
@@ -467,12 +431,12 @@
             </div>
             <div class="timeline-content">
               <div class="timeline-meta">
-                <span class="timeline-date">2024 — Present</span>
+                <span class="timeline-date">2026 — Present</span>
                 <span class="timeline-badge">Current</span>
               </div>
               <h3>Frontend Developer (Freelance)</h3>
               <p class="timeline-org">Self-Employed</p>
-              <p>Building modern websites and web apps for clients. Delivering responsive, accessible, and performant frontends using React and vanilla JavaScript.</p>
+              <p>Building modern websites and web apps for clients. Delivering responsive, accessible, and performant frontends using JavaScript and CSS.</p>
             </div>
           </div>
           <div class="timeline-item">
@@ -486,7 +450,7 @@
               </div>
               <h3>Junior Frontend Developer</h3>
               <p class="timeline-org">WebStudio</p>
-              <p>Developed responsive web applications for diverse clients. Worked with React, ensured cross-browser compatibility, and collaborated on design handoffs.</p>
+              <p>Developed responsive web applications for diverse clients. Worked with JavaScript and CSS, ensured cross-browser compatibility, and collaborated on design handoffs.</p>
             </div>
           </div>
           <div class="timeline-item">
@@ -506,65 +470,44 @@
       </div>
     </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
+    <!-- ============ APPROACH ============ -->
     <section id="testimonials" class="testimonials">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Testimonials</span>
-          <h2 class="section-title">What People <span class="text-gradient">Say</span></h2>
-          <p class="section-subtitle">Kind words from clients and collaborators I've worked with.</p>
+          <span class="section-tag">Approach</span>
+          <h2 class="section-title">How I <span class="text-gradient">Work</span></h2>
+          <p class="section-subtitle">Principles I follow on every project, big or small.</p>
         </div>
         <div class="testimonials-grid">
           <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="testimonial-card-icon" style="color:var(--accent);font-size:1.5rem;margin-bottom:16px;">
+              <i class="fas fa-mobile-alt"></i>
             </div>
-            <blockquote>
-              "Muaz delivered a stunning website that exceeded our expectations. His attention to detail and clean code made the project a breeze."
-            </blockquote>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">
-                <img src="https://placehold.co/48x48/6c63ff/ffffff?text=SK" alt="Sarah Kim">
-              </div>
-              <div>
-                <strong>Sarah Kim</strong>
-                <span>Product Manager, TechFlow</span>
-              </div>
-            </div>
+            <h3 style="font-size:1.1rem;margin-bottom:8px;">Mobile-First by Default</h3>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Every layout starts from the smallest screen and scales up. 
+              No pinching, no zooming — just a natural experience on any device.
+            </p>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="testimonial-card-icon" style="color:var(--accent);font-size:1.5rem;margin-bottom:16px;">
+              <i class="fas fa-code"></i>
             </div>
-            <blockquote>
-              "Working with Muaz was fantastic. He understood our vision immediately and translated it into a beautiful, responsive interface."
-            </blockquote>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">
-                <img src="https://placehold.co/48x48/6c63ff/ffffff?text=JM" alt="James Miller">
-              </div>
-              <div>
-                <strong>James Miller</strong>
-                <span>Founder, StartupHub</span>
-              </div>
-            </div>
+            <h3 style="font-size:1.1rem;margin-bottom:8px;">Clean, Semantic Code</h3>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              I write code that's readable, maintainable, and accessible. 
+              The next developer (or future me) should be able to pick it up instantly.
+            </p>
           </div>
           <div class="testimonial-card">
-            <div class="testimonial-stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="testimonial-card-icon" style="color:var(--accent);font-size:1.5rem;margin-bottom:16px;">
+              <i class="fas fa-bolt"></i>
             </div>
-            <blockquote>
-              "His frontend skills are top-notch. The dashboard he built for us is fast, accessible, and looks incredible on every device."
-            </blockquote>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">
-                <img src="https://placehold.co/48x48/6c63ff/ffffff?text=AL" alt="Amy Liu">
-              </div>
-              <div>
-                <strong>Amy Liu</strong>
-                <span>CTO, DataViz Co.</span>
-              </div>
-            </div>
+            <h3 style="font-size:1.1rem;margin-bottom:8px;">Performance Obsessed</h3>
+            <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+              Fast load times, smooth interactions, and optimized assets. 
+              I treat performance as a feature — not an afterthought.
+            </p>
           </div>
         </div>
       </div>
