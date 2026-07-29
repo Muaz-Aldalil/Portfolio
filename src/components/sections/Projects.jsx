@@ -88,7 +88,7 @@ function ProjectCard({ project }) {
           )}
         </div>
 
-        <p className="text-[var(--color-text-muted)] text-[13px] leading-relaxed mb-3 line-clamp-2">
+        <p className="text-[var(--color-text-muted)] text-[13px] leading-relaxed mb-3">
           {project.description}
         </p>
 
