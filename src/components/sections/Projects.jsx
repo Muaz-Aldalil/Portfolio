@@ -13,7 +13,7 @@ export function Projects() {
               <span className="text-[var(--color-text-muted)]">work.</span>
             </h2>
             <p className="text-[var(--color-text-muted)] text-sm mt-3 max-w-sm mx-auto leading-relaxed">
-              A collection of projects I've built. from e-commerce to AI-powered tools.
+              A collection of projects I've built. from e-commerce and AI to full-stack platforms.
             </p>
           </div>
         </ScrollReveal>
@@ -31,12 +31,17 @@ export function Projects() {
 }
 
 function ProjectCard({ project }) {
+  const hasDemo = project.demoUrl && project.demoUrl.startsWith('http')
+
+  const Wrapper = hasDemo ? 'a' : 'div'
+  const wrapperProps = hasDemo
+    ? { href: project.demoUrl, target: '_blank', rel: 'noopener noreferrer' }
+    : {}
+
   return (
-    <a
-      href={project.demoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block bg-[var(--color-bg)] border border-[var(--color-border)] rounded-[var(--radius-lg)] overflow-hidden hover:border-[var(--color-primary)]/30 transition-all duration-300"
+    <Wrapper
+      {...wrapperProps}
+      className={`group block bg-[var(--color-bg)] border border-[var(--color-border)] rounded-[var(--radius-lg)] overflow-hidden ${hasDemo ? 'hover:border-[var(--color-primary)]/30 cursor-pointer' : ''} transition-all duration-300`}
     >
       {/* Screenshot */}
       <div className="overflow-hidden">
@@ -61,9 +66,15 @@ function ProjectCard({ project }) {
           <span className="font-mono text-[10px] text-[var(--color-text-muted)] uppercase tracking-[var(--tracking-wider)]">
             {String(project.id).padStart(2, '0')}
           </span>
-          <span className="font-mono text-[11px] text-[var(--color-primary)] tracking-wide flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            Live Demo <ExternalLink className="w-3 h-3" />
-          </span>
+          {hasDemo ? (
+            <span className="font-mono text-[11px] text-[var(--color-primary)] tracking-wide flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              Live Demo <ExternalLink className="w-3 h-3" />
+            </span>
+          ) : (
+            <span className="font-mono text-[10px] text-[var(--color-text-muted)] tracking-wide opacity-60">
+              Coming Soon
+            </span>
+          )}
         </div>
 
         <div className="flex items-center gap-2 mb-2">
@@ -71,7 +82,7 @@ function ProjectCard({ project }) {
             {project.title}
           </h3>
           {project.badge && (
-            <span className="font-mono text-[10px] text-[#059669] border border-[#059669]/30 bg-[#059669]/10 px-2 py-0.5 rounded-full tracking-wide whitespace-nowrap">
+            <span className="font-mono text-[10px] text-[#059669] border border-[#059669]/30 bg-[#059669]/10 px-2 py-0.5 rounded-full tracking-wide whitespace-nowrap flex-shrink-0">
               {project.badge}
             </span>
           )}
@@ -89,6 +100,6 @@ function ProjectCard({ project }) {
           ))}
         </div>
       </div>
-    </a>
+    </Wrapper>
   )
 }
