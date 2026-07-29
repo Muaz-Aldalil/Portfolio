@@ -31,5 +31,14 @@ export const projects = [
     tech: ['React', 'Tailwind CSS'],
     demoUrl: 'https://fanciful-genie-b32454.netlify.app/',
     image: '/deth of the password.png'
+  },
+  {
+    id: 5,
+    title: 'Al-Amiriya School Management System',
+    badge: 'Full Stack + Supabase',
+    description: 'A full-featured School Management System built for a Sudanese school. Supports multi-role portals (Admin, Teacher, Student, Parent) with real-time attendance tracking, grade management, payment processing, registrations, PWA offline capabilities, RTL/bilingual (Arabic/English) i18n, and a public landing page. Built on Supabase with Row-Level Security, real-time sync, and an offline-first architecture.',
+    tech: ['React 19', 'Vite 6', 'Supabase', 'Tailwind CSS 4', 'PWA', 'Vitest', 'Netlify'],
+    demoUrl: 'https://al-amiriya-school.netlify.app',
+    image: '/al-amiriya.png'
   }
 ]

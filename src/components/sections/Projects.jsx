@@ -40,11 +40,19 @@ function ProjectCard({ project }) {
     >
       {/* Screenshot */}
       <div className="overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-40 sm:h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        />
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-40 sm:h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-40 sm:h-48 bg-[var(--color-surface-2)] flex items-center justify-center">
+            <span className="font-display text-[var(--color-text-muted)]/30 text-4xl font-light tracking-[var(--tracking-tighter)]">
+              {project.title.split(' ').map(w => w[0]).join('').slice(0, 3)}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
