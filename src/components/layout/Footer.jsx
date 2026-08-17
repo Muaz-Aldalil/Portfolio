@@ -1,7 +1,18 @@
 import { GithubIcon, LinkedinIcon } from '../ui/SocialIcons'
 import { Mail } from 'lucide-react'
+import { useLanguage } from '../../hooks/useLanguage'
 
 export function Footer() {
+  const { t } = useLanguage()
+
+  const navLinks = [
+    { label: t('nav.about'), href: '#about' },
+    { label: t('nav.skills'), href: '#skills' },
+    { label: t('nav.projects'), href: '#projects' },
+    { label: t('nav.certifications'), href: '#certifications' },
+    { label: t('nav.contact'), href: '#contact' },
+  ]
+
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
       <div className="container-narrow py-8">
@@ -11,23 +22,23 @@ export function Footer() {
               Muaz Aldalil
             </span>
             <p className="text-[12px] text-[var(--color-text-muted)] leading-relaxed">
-              Frontend developer crafting<br />
-              clean, fast, accessible experiences.
+              {t('footer.tagline1')}<br />
+              {t('footer.tagline2')}
             </p>
           </div>
 
           <div>
             <span className="font-mono text-[10px] text-[var(--color-text-muted)] uppercase tracking-[var(--tracking-wider)] block mb-2">
-              Navigation
+              {t('footer.navigation')}
             </span>
             <div className="space-y-1">
-              {['About', 'Skills', 'Projects', 'Certifications', 'Contact'].map(label => (
+              {navLinks.map(link => (
                 <a
-                  key={label}
-                  href={`#${label.toLowerCase()}`}
+                  key={link.href}
+                  href={link.href}
                   className="block text-[12px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors cursor-pointer"
                 >
-                  {label}
+                  {link.label}
                 </a>
               ))}
             </div>
@@ -35,7 +46,7 @@ export function Footer() {
 
           <div>
             <span className="font-mono text-[10px] text-[var(--color-text-muted)] uppercase tracking-[var(--tracking-wider)] block mb-2">
-              Connect
+              {t('footer.connect')}
             </span>
             <div className="flex items-center gap-3">
               <a href="https://github.com/muaz-aldalil" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors cursor-pointer" aria-label="GitHub">

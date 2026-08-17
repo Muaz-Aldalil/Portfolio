@@ -1,4 +1,5 @@
 import { useTheme } from './hooks/useTheme'
+import { LanguageProvider } from './i18n/LanguageContext'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
@@ -13,21 +14,23 @@ function App() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+    <LanguageProvider>
+      <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300">
+        <Header theme={theme} toggleTheme={toggleTheme} />
 
-      <main>
-        <Hero />
-        <Marquee />
-        <About />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <Marquee />
+          <About />
+          <Skills />
+          <Projects />
+          <Certifications />
+          <Contact />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }
 

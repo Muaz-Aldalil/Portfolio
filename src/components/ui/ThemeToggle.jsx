@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion'
 import { Sun, Moon } from 'lucide-react'
+import { useLanguage } from '../../hooks/useLanguage'
 
 export function ThemeToggle({ theme, toggleTheme }) {
+  const { t } = useLanguage()
+
   return (
     <button
       onClick={toggleTheme}
       className="relative w-8 h-8 rounded-[var(--radius-md)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)] transition-all duration-200 cursor-pointer"
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={theme === 'light' ? t('ui.switchToDark') : t('ui.switchToLight')}
     >
       <motion.div
         key={theme}

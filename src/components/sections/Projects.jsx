@@ -1,19 +1,33 @@
-import { projects } from '../../data/projects'
+import { projects as projectsData } from '../../data/projects'
 import { ScrollReveal } from '../ui/ScrollReveal'
 import { ExternalLink } from 'lucide-react'
+import { useLanguage } from '../../hooks/useLanguage'
 
 export function Projects() {
+  const { lang, t } = useLanguage()
+  const projectsTranslations = t('projectsData')
+
+  const projects = projectsData.map((p) => {
+    const tr = Array.isArray(projectsTranslations) ? projectsTranslations.find(t => t.id === p.id) : null
+    return {
+      ...p,
+      title: tr ? tr.title : p.title,
+      badge: tr ? tr.badge : p.badge,
+      description: tr ? tr.description : p.description,
+    }
+  })
+
   return (
     <section id="projects" className="min-h-dvh py-16 sm:py-20 bg-[var(--color-surface)] flex items-center">
       <div className="container-narrow">
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="font-display text-[clamp(1.75rem,4vw,3rem)] font-light text-[var(--color-text)] tracking-[var(--tracking-tighter)] leading-[1.05]">
-              Selected<br />
-              <span className="text-[var(--color-text-muted)]">work.</span>
+              {t('projects.title1')}<br />
+              <span className="text-[var(--color-text-muted)]">{t('projects.title2')}</span>
             </h2>
             <p className="text-[var(--color-text-muted)] text-sm mt-3 max-w-sm mx-auto leading-relaxed">
-              A collection of projects I've built. from e-commerce and AI to full-stack platforms.
+              {t('projects.subtitle')}
             </p>
           </div>
         </ScrollReveal>
@@ -21,7 +35,7 @@ export function Projects() {
         <div className="grid md:grid-cols-2 gap-3">
           {projects.map((project, i) => (
             <ScrollReveal key={project.id} delay={i * 0.1}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} t={t} />
             </ScrollReveal>
           ))}
         </div>
@@ -30,7 +44,7 @@ export function Projects() {
   )
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, t }) {
   const hasDemo = project.demoUrl && project.demoUrl.startsWith('http')
 
   const Wrapper = hasDemo ? 'a' : 'div'
@@ -43,7 +57,6 @@ function ProjectCard({ project }) {
       {...wrapperProps}
       className={`group block bg-[var(--color-bg)] border border-[var(--color-border)] rounded-[var(--radius-lg)] overflow-hidden ${hasDemo ? 'hover:border-[var(--color-primary)]/30 cursor-pointer' : ''} transition-all duration-300`}
     >
-      {/* Screenshot */}
       <div className="overflow-hidden">
         {project.image ? (
           <img
@@ -60,7 +73,6 @@ function ProjectCard({ project }) {
         )}
       </div>
 
-      {/* Content */}
       <div className="p-5 sm:p-6">
         <div className="flex items-center justify-between mb-2">
           <span className="font-mono text-[10px] text-[var(--color-text-muted)] uppercase tracking-[var(--tracking-wider)]">
@@ -68,11 +80,11 @@ function ProjectCard({ project }) {
           </span>
           {hasDemo ? (
             <span className="font-mono text-[11px] text-[var(--color-primary)] tracking-wide flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              Live Demo <ExternalLink className="w-3 h-3" />
+              {t('projects.liveDemo')} <ExternalLink className="w-3 h-3" />
             </span>
           ) : (
             <span className="font-mono text-[10px] text-[var(--color-text-muted)] tracking-wide opacity-60">
-              Coming Soon
+              {t('projects.comingSoon')}
             </span>
           )}
         </div>
@@ -88,7 +100,7 @@ function ProjectCard({ project }) {
           )}
         </div>
 
-        <p className="text-[var(--color-text-muted)] text-[13px] leading-relaxed mb-3">
+        <p className="text-[var(--color-text-muted)] text-[13px] leading-relaxed mb-3 line-clamp-3">
           {project.description}
         </p>
 

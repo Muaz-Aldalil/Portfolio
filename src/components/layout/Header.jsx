@@ -1,23 +1,25 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "../../hooks/useLanguage";
 
 export function Header({ theme, toggleTheme }) {
+  const { lang, t, toggleLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState(null);
   const navRef = useRef(null);
   const linkRefs = useRef({});
   const [underline, setUnderline] = useState({ left: 0, width: 0, opacity: 0 });
+
+  const navItems = [
+    { label: t('nav.home'), href: "#hero" },
+    { label: t('nav.about'), href: "#about" },
+    { label: t('nav.skills'), href: "#skills" },
+    { label: t('nav.projects'), href: "#projects" },
+    { label: t('nav.certifications'), href: "#certifications" },
+    { label: t('nav.contact'), href: "#contact" },
+  ];
 
   const getLinkRect = useCallback((href) => {
     const container = navRef.current;
@@ -28,7 +30,6 @@ export function Header({ theme, toggleTheme }) {
     return { left: linkRect.left - containerRect.left, width: linkRect.width };
   }, []);
 
-  // Sliding underline
   useEffect(() => {
     if (active) {
       const rect = getLinkRect(active);
@@ -38,17 +39,14 @@ export function Header({ theme, toggleTheme }) {
     }
   }, [active, getLinkRect]);
 
-  // Scroll — background
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll — active section tracking
   useEffect(() => {
     const hero = document.querySelector(".hero-section");
-
     const getTop = (el) => el.getBoundingClientRect().top + window.scrollY;
 
     const calcOffsets = () => {
@@ -90,9 +88,8 @@ export function Header({ theme, toggleTheme }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [navItems]);
 
-  // Resize — recalc underline
   useEffect(() => {
     const handleResize = () => {
       if (active) {
@@ -104,7 +101,6 @@ export function Header({ theme, toggleTheme }) {
     return () => window.removeEventListener("resize", handleResize);
   }, [active, getLinkRect]);
 
-  // Mobile — close on Escape
   useEffect(() => {
     if (!mobileOpen) return;
     const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
@@ -112,7 +108,6 @@ export function Header({ theme, toggleTheme }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
-  // Mobile — close on outside click
   useEffect(() => {
     if (!mobileOpen) return;
     const onClick = (e) => {
@@ -128,11 +123,10 @@ export function Header({ theme, toggleTheme }) {
     >
       <div className="container-narrow">
         <div className="flex items-center justify-between h-14">
-          {/* Left — Logo */}
           <a
             href="#"
             className="flex items-center justify-center w-8 h-8 hover:opacity-80 transition-opacity cursor-pointer"
-            aria-label="Home"
+            aria-label={t('nav.home')}
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
               <path d="M4 20V6L12 14L20 6V20" stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -140,7 +134,6 @@ export function Header({ theme, toggleTheme }) {
             </svg>
           </a>
 
-          {/* Center — Nav links with sliding underline */}
           <nav
             ref={navRef}
             className="hidden md:flex items-center gap-7 relative"
@@ -160,7 +153,6 @@ export function Header({ theme, toggleTheme }) {
                 {item.label}
               </a>
             ))}
-            {/* Sliding underline */}
             <span
               className="absolute bottom-0 left-0 h-[2px] bg-[var(--color-primary)] rounded-full pointer-events-none"
               style={{
@@ -173,13 +165,21 @@ export function Header({ theme, toggleTheme }) {
             />
           </nav>
 
-          {/* Right — Theme + Mobile */}
           <div className="flex items-center gap-1">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <button
+              onClick={toggleLanguage}
+              className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-md)] font-mono text-[11px] font-semibold text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)] transition-all duration-200 cursor-pointer"
+              aria-label={lang === 'en' ? 'Switch to Arabic' : 'التبديل إلى الإنجليزية'}
+            >
+              {lang === 'en' ? 'AR' : 'EN'}
+            </button>
+            <div className="hidden md:block">
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden w-8 h-8 flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)] rounded-[var(--radius-md)] transition-all duration-200 cursor-pointer"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-label={mobileOpen ? t('ui.closeMenu') : t('ui.openMenu')}
               aria-expanded={mobileOpen}
             >
               {mobileOpen ? (
@@ -192,10 +192,9 @@ export function Header({ theme, toggleTheme }) {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[var(--color-bg)] border-b border-[var(--color-border)]">
-          <nav className="container-narrow py-4 flex flex-col gap-2">
+          <nav className="container-narrow py-3 flex flex-col gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -204,7 +203,7 @@ export function Header({ theme, toggleTheme }) {
                   setActive(item.href);
                   setMobileOpen(false);
                 }}
-                className={`block px-5 py-2.5 text-center text-[14px] font-semibold rounded-[var(--radius-md)] transition-colors cursor-pointer ${
+                className={`block px-5 py-2 text-center text-[14px] font-semibold rounded-[var(--radius-md)] transition-colors cursor-pointer ${
                   active === item.href
                     ? "text-[var(--color-primary)] bg-[var(--color-surface-2)]"
                     : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)]"
@@ -213,6 +212,20 @@ export function Header({ theme, toggleTheme }) {
                 {item.label}
               </a>
             ))}
+            <div className="border-t border-[var(--color-border)] mt-1 pt-1">
+              <button
+                onClick={() => {
+                  toggleTheme();
+                  setMobileOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-5 py-2 text-[14px] font-semibold text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-2)] rounded-[var(--radius-md)] transition-colors cursor-pointer"
+              >
+                <span className="text-[var(--color-text-muted)]">
+                  {theme === 'light' ? '🌙' : '☀️'}
+                </span>
+                {t('ui.theme')}
+              </button>
+            </div>
           </nav>
         </div>
       )}

@@ -1,18 +1,21 @@
 import { certifications } from '../../data/certifications'
 import { ScrollReveal } from '../ui/ScrollReveal'
 import { ExternalLink } from 'lucide-react'
+import { useLanguage } from '../../hooks/useLanguage'
 
 export function Certifications() {
+  const { t } = useLanguage()
+
   return (
     <section id="certifications" className="min-h-dvh py-16 sm:py-20 flex items-center">
       <div className="container-narrow">
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="font-display text-[clamp(1.75rem,4vw,3rem)] font-light text-[var(--color-text)] tracking-[var(--tracking-tighter)] leading-[1.05]">
-              Certifications
+              {t('certifications.title')}
             </h2>
             <p className="text-[var(--color-text-muted)] text-sm mt-3 max-w-sm mx-auto leading-relaxed">
-              Courses completed to strengthen my development skills.
+              {t('certifications.subtitle')}
             </p>
           </div>
         </ScrollReveal>
