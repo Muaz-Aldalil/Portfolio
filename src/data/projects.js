@@ -6,7 +6,7 @@ export const projects = [
     description: 'Modern, RTL-first Arabic landing website for a Sudanese bodybuilding & fitness online coach, built as a Progressive Web App (PWA) with full offline support.',
     tech: ['React 19', 'TypeScript', 'Tailwind CSS v4', 'React Router v7', 'PWA', 'Radix UI'],
     demoUrl: 'https://fkhreldin-bshar.netlify.app/',
-    image: null
+    image: '/coach-fakhraldin.png'
   },
   {
     id: 2,
