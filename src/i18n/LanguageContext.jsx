@@ -43,7 +43,7 @@ export function LanguageProvider({ children }) {
       root.style.setProperty('--font-body', "'Inter', sans-serif")
     }
 
-    const title = lang === 'ar' ? 'معاذ الدلال — مطور واجهات أمامية' : 'Muaz Aldalil — Frontend Developer'
+    const title = lang === 'ar' ? 'معاذ الدليل — مطور واجهات أمامية' : 'Muaz Aldalil — Frontend Developer'
     document.title = title
 
     const ogTitle = document.querySelector('meta[property="og:title"]')
@@ -53,7 +53,7 @@ export function LanguageProvider({ children }) {
     if (twTitle) twTitle.setAttribute('content', title)
 
     const metaDesc = lang === 'ar'
-      ? 'معاذ الدلال — مطور واجهات أمامية متخصص في React وTailwind CSS والتقنيات الحديثة. بناء مواقع نظيفة وسريعة وسهلة الوصول.'
+      ? 'معاذ الدليل — مطور واجهات أمامية متخصص في React وTailwind CSS والتقنيات الحديثة. بناء مواقع نظيفة وسريعة وسهلة الوصول.'
       : 'Muaz Aldalil — Frontend Developer specializing in React, Tailwind CSS, and modern web technologies. Building clean, fast, and accessible websites.'
 
     const desc = document.querySelector('meta[name="description"]')
