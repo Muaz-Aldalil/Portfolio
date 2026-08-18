@@ -31,7 +31,7 @@ export function Hero() {
           className="flex flex-col items-center gap-5"
         >
           <p className="text-[var(--color-text-muted)] text-base sm:text-lg leading-relaxed max-w-md">
-            <span className="text-[var(--color-text)] font-bold">Muaz Aldalil</span> {t('hero.subtitle')}
+            <span className="text-[var(--color-text)] font-bold">{t('hero.name')}</span> {t('hero.subtitle')}
           </p>
           <div className="flex flex-col items-center gap-4">
             <div className="flex items-center justify-center gap-4">

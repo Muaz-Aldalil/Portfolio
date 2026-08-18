@@ -19,7 +19,7 @@ export function Footer() {
         <div className="grid sm:grid-cols-3 gap-6 items-start">
           <div>
             <span className="font-mono text-xs text-[var(--color-text)] tracking-[var(--tracking-wider)] uppercase block mb-1.5">
-              Muaz Aldalil
+              {t('hero.name')}
             </span>
             <p className="text-[12px] text-[var(--color-text-muted)] leading-relaxed">
               {t('footer.tagline1')}<br />
